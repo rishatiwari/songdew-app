@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+
 
 
 @Component({
@@ -8,7 +8,5 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'songdew-app';
-  profileForm:FormGroup;
-  
+  title = 'songdew-app';  
 }

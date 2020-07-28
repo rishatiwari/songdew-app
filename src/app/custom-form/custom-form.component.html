@@ -1,0 +1,10 @@
+<div class="grid-container">
+    <form [formGroup] = "customForm">
+        <div>
+            <mat-form-field appearance="outline" class="full-width">
+                <input matInput formControlName="fname" maxlength="50" placeholder="First Name">
+                <!--<mat-hint>{{input.value?.length || 0}}/50</mat-hint>-->
+            </mat-form-field>
+        </div>
+    </form>
+</div>
