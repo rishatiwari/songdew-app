@@ -1,10 +1,50 @@
-<div class="grid-container">
+<!--<div class="grid-container">
     <form [formGroup] = "customForm">
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <input matInput formControlName="fname" maxlength="50" placeholder="First Name">
-                <!--<mat-hint>{{input.value?.length || 0}}/50</mat-hint>-->
             </mat-form-field>
         </div>
     </form>
-</div>
+</div>-->
+
+<!--   in just below line -->
+<div class="nav-container"  [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button (mouseenter)="snav.toggle()"><mat-icon>menu</mat-icon></button>      
+      <h1 class="example-app-name">Songdew App</h1>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'over'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <!--<mat-accordion class="example-headers-align">
+            
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>Home</mat-panel-title>
+                  </mat-expansion-panel-header>
+                  
+                </mat-expansion-panel>
+        </mat-accordion>-->
+        <mat-nav-list>
+            <a (click)="close()" mat-list-item routerLink="/home">Home</a>
+          </mat-nav-list>  
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <!--<router-outlet></router-outlet>-->
+        <div class="content">
+            <mat-grid-list cols="3" rowHeight="700px">
+                <mat-grid-tile>
+                    <mat-card class="dev-card">
+                      <mat-card-content class="dev-card-content">
+                        Test
+                      </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>

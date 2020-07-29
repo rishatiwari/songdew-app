@@ -7,6 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomFormComponent } from './custom-form/custom-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { LayoutModule } from '@angular/cdk/layout';
+import {MatIconModule} from '@angular/material/icon';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+
 
 @NgModule({
   declarations: [
@@ -19,7 +30,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatListModule,
+    MatCardModule,
+    MatGridListModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
