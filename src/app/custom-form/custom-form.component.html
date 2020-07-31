@@ -1,14 +1,3 @@
-<!--<div class="grid-container">
-    <form [formGroup] = "customForm">
-        <div>
-            <mat-form-field appearance="outline" class="full-width">
-                <input matInput formControlName="fname" maxlength="50" placeholder="First Name">
-            </mat-form-field>
-        </div>
-    </form>
-</div>-->
-
-<!--   in just below line -->
 <div class="nav-container"  [class.example-is-mobile]="mobileQuery.matches">
     <mat-toolbar color="primary" class="example-toolbar">
       <button mat-icon-button (mouseenter)="snav.toggle()"><mat-icon>menu</mat-icon></button>      
@@ -19,15 +8,6 @@
                            [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
       <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'over'"
                    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-        <!--<mat-accordion class="example-headers-align">
-            
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>Home</mat-panel-title>
-                  </mat-expansion-panel-header>
-                  
-                </mat-expansion-panel>
-        </mat-accordion>-->
         <mat-nav-list>
             <a (click)="close()" mat-list-item routerLink="/home">Home</a>
           </mat-nav-list>  
@@ -35,15 +15,86 @@
       <mat-sidenav-content>
         <!--<router-outlet></router-outlet>-->
         <div class="content">
-            <mat-grid-list cols="3" rowHeight="700px">
-                <mat-grid-tile>
-                    <mat-card class="dev-card">
-                      <mat-card-content class="dev-card-content">
-                        Test
-                      </mat-card-content>
-                    </mat-card>
-                </mat-grid-tile>
-            </mat-grid-list>
+          <mat-card class="dev-card">
+            <mat-card-content class="dev-card-content">
+              <form [formGroup] = "customForm" class="dev-card-form">
+                <table class="form-tbl">
+                  <tbody>
+                    <tr>
+                      <td>
+                          <mat-label>Name</mat-label>
+                      </td>
+                      <td colspan="2">
+                          <mat-form-field appearance="outline" class="full-width">
+                            <input matInput #input maxlength="50" placeholder="Enter Name" formControlName="name">
+                            <mat-hint align="end">{{input.value?.length || 0}}/50</mat-hint>
+                            <mat-error *ngIf="hasError('name', 'required') && customForm.controls['name'].touched">Please enter a valid name!</mat-error>
+                          </mat-form-field>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <mat-label>Age</mat-label>
+                      </td>
+                      <td colspan="2">
+                          <mat-form-field appearance="outline" class="full-width">
+                            <input type="number" matInput  placeholder="Enter Age" formControlName="age" (input)="ageValidator($event.target.value)">
+                            <mat-error *ngIf="!allowAge && customForm.controls['age'].touched">{{errorMsg}}</mat-error>
+                          </mat-form-field>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <mat-label>Email</mat-label>
+                      </td>
+                      <td colspan="2">
+                          <mat-form-field appearance="outline" class="full-width">
+                            <input type="text" matInput placeholder="Enter Email" formControlName="email">
+                            <mat-error *ngIf="hasError('email', 'email') && customForm.controls['name'].touched">Enter a valid Email!</mat-error>
+                          </mat-form-field>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <mat-label>Create Tags</mat-label>
+                      </td>
+                      <td colspan="2">
+                        <mat-form-field class="full-width">
+                          <mat-chip-list #completeList>
+                            <!--Iterate by array of data and display a chip for each value.-->
+                            <mat-chip color="accent"
+                              *ngFor="let tag of tagList"
+                              removable
+                              (removed)="onRemoveTags(tag)" >
+                              {{tag}}
+                            <!--Icon that is used as a button when 'removable' set to true.-->
+                              <mat-icon matChipRemove >cancel</mat-icon>
+                            </mat-chip>
+                            <input placeholder="Enter Tag Name"
+                                   [matChipInputAddOnBlur]="true"
+                                   [matChipInputFor]="completeList"
+                                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                   (matChipInputTokenEnd)="addTags($event)">
+                          </mat-chip-list>
+                        </mat-form-field>
+                        <mat-error *ngIf="!allowTag">Only 5 Tags can be created!</mat-error>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                          <mat-label>Music File Upload</mat-label>
+                      </td>
+                      <td colspan="2">
+                        <div class="upload-container">
+                          <input type="file" class="form-control" (change)="uploadedFile($event)" placeholder="Upload file" accept=".mp3,.flac,.wav">
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </mat-card-content>
+          </mat-card>
         </div>
       </mat-sidenav-content>
     </mat-sidenav-container>

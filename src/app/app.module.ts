@@ -16,6 +16,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 
@@ -39,8 +42,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatExpansionModule,
     MatListModule,
     MatCardModule,
-    MatGridListModule
-  
+    MatGridListModule,
+    MatSelectModule,
+    MatInputModule,
+    MatChipsModule  
   ],
   providers: [],
   bootstrap: [AppComponent]

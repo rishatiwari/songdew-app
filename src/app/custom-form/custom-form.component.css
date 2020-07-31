@@ -8,3 +8,34 @@
 mat-card.dev-card.mat-card:hover {
     border:0.5px solid aqua;
 }
+mat-form-field.full-width {
+  width: 98%;
+  font-size: smaller;
+}
+.dev-card-form {
+  width: 70%;
+  margin: auto;
+}
+.form-tbl {
+  width: 100%;
+}
+.mat-error {
+  font-size: 11px;
+}
+.mat-chip.mat-standard-chip {
+  background-color: #69f0ae;
+  color: #000000;
+}
+.mat-chip.mat-standard-chip .mat-chip-remove {
+  color: #0c0c0c;
+  opacity: .4;
+}
+.upload-container {
+  margin-top: 2%;
+}
+.dev-card {
+  width: 60%;
+  margin: auto;
+  background-color: #0c0c0c;
+  height: 550px;
+}
