@@ -56,7 +56,8 @@
                     </tr>
                     <tr>
                       <td>
-                          <mat-label>Create Tags</mat-label>
+                          <mat-label>Create Tags(</mat-label>
+                          <mat-hint>Use (ENTER/COMMA) to separate tags.</mat-hint>
                       </td>
                       <td colspan="2">
                         <mat-form-field class="full-width">
@@ -93,6 +94,9 @@
                     </tr>
                   </tbody>
                 </table>
+                <!--<div class="submit-container">
+                  <button mat-button mat-stroked-button color="accent" [disabled]="!customForm.valid" >Submit</button>
+                </div>-->
               </form>
             </mat-card-content>
           </mat-card>

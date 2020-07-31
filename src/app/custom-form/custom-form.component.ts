@@ -4,6 +4,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
+import { jsmediatags } from 'jsmediatags';
 
 
 
@@ -53,7 +54,6 @@ export class CustomFormComponent implements OnInit {
   }
 
   ageValidator(val):void {
-    console.log(val);
     if(val < 18) {
       this.allowAge = false;
       this.errorMsg = "User must be of 18years to access the site!"
@@ -90,5 +90,13 @@ export class CustomFormComponent implements OnInit {
       this.fileSize = false;
       console.log("File size must be les than 10MB!")
     }
+    jsmediatags.read(this.fileUploaded, {
+      onSuccess: function(tag) {
+        console.log(tag);
+      },
+      onError: function(error) {
+        console.log(':(', error.type, error.info);
+      }
+    });
   }
 }

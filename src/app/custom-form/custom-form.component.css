@@ -39,3 +39,7 @@ mat-form-field.full-width {
   background-color: #0c0c0c;
   height: 550px;
 }
+.mat-hint {
+  font-size: 10px;
+  display: block;
+}
