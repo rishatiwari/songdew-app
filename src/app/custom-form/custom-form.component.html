@@ -87,6 +87,7 @@
                       <td colspan="2">
                         <div class="upload-container">
                           <input type="file" class="form-control" (change)="uploadedFile($event)" placeholder="Upload file" accept=".mp3,.flac,.wav">
+                          <mat-error *ngIf="!fileSize">File size must be les than 10MB!</mat-error>
                         </div>
                       </td>
                     </tr>

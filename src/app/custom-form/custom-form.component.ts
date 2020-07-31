@@ -85,6 +85,7 @@ export class CustomFormComponent implements OnInit {
 
   uploadedFile(event) {
     this.fileUploaded = event.target.files[0]; 
+    console.log(this.fileUploaded);
     if( Number(((this.fileUploaded.size/1024)/1024).toFixed(4)) > 10 ) {
       this.fileSize = false;
       console.log("File size must be les than 10MB!")
