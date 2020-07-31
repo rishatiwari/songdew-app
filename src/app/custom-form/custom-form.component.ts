@@ -4,10 +4,12 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { jsmediatags } from 'jsmediatags';
+import * as jsmediatags from 'jsmediatags';
 
-
-
+export class Tag {
+ type: string;
+ value: string; 
+}
 
 @Component({
   selector: 'app-custom-form',
@@ -24,7 +26,8 @@ export class CustomFormComponent implements OnInit {
   allowTag:boolean = true;
   tagList:any[] = [];
   fileUploaded: File; 
-  fileSize:boolean = true;;
+  fileSize:boolean = true;
+  tags:Tag[] = [];
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   @ViewChild('snav', {static: false}) sidenav: MatSidenav;
@@ -83,20 +86,39 @@ export class CustomFormComponent implements OnInit {
     }
   }
 
+
   uploadedFile(event) {
+    this.fileSize = true;
     this.fileUploaded = event.target.files[0]; 
-    console.log(this.fileUploaded);
     if( Number(((this.fileUploaded.size/1024)/1024).toFixed(4)) > 10 ) {
       this.fileSize = false;
-      console.log("File size must be les than 10MB!")
     }
-    jsmediatags.read(this.fileUploaded, {
-      onSuccess: function(tag) {
-        console.log(tag);
-      },
-      onError: function(error) {
-        console.log(':(', error.type, error.info);
-      }
-    });
+    if(this.fileSize) {
+      jsmediatags.read(this.fileUploaded, {
+        onSuccess: meta => {
+          console.table(meta);
+          let allowedTags = [
+            "album",
+            "artist",
+            "genre"
+          ];
+          console.log(this.tags);
+          for (const k in meta.tags) {
+            if (allowedTags.includes(k)) {
+              const v = meta.tags[k];
+              this.tags.push(
+                {
+                  'type': k,
+                  'value': v
+                }
+              );
+            }
+          };
+        },
+        onError: function(error) {
+          console.log(':(', error.type, error.info);
+        }
+      });
+    }
   }
 }

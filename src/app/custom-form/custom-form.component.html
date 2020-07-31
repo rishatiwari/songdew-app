@@ -56,8 +56,8 @@
                     </tr>
                     <tr>
                       <td>
-                          <mat-label>Create Tags(</mat-label>
-                          <mat-hint>Use (ENTER/COMMA) to separate tags.</mat-hint>
+                          <mat-label>Create Tags</mat-label>
+                          <mat-hint>Use (ENTER/COMMA) to separate tags</mat-hint>
                       </td>
                       <td colspan="2">
                         <mat-form-field class="full-width">
@@ -89,6 +89,12 @@
                         <div class="upload-container">
                           <input type="file" class="form-control" (change)="uploadedFile($event)" placeholder="Upload file" accept=".mp3,.flac,.wav">
                           <mat-error *ngIf="!fileSize">File size must be les than 10MB!</mat-error>
+                        </div>
+                        <div class="song-tags">
+                           <div *ngFor="let tag of tags">
+                             <span class="tag-heading">{{tag.type}}:</span>
+                             <span class="tag-value">{{tag.value}}</span>
+                           </div>
                         </div>
                       </td>
                     </tr>

@@ -43,3 +43,13 @@ mat-form-field.full-width {
   font-size: 10px;
   display: block;
 }
+
+.tag-heading {
+  text-transform: capitalize;
+  font-weight: bold;
+  padding-right: 0.3em;
+}
+
+.song-tags {
+  padding-top: 0.2em;
+}
